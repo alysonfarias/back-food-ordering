@@ -22,3 +22,5 @@ router.get(
     .notEmpty()
     .withMessage("City parameter must be a valid string")
 );
+
+export default router;

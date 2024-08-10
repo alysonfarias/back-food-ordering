@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import Restaurant from "../models/restaurant";
 import cloudinary from "cloudinary";
 import mongoose from "mongoose";
-
 import Order from "../models/order";
 
 const getMyRestaurant = async (req: Request, res: Response) => {
@@ -25,7 +24,7 @@ const createMyRestaurant = async (req: Request, res: Response) => {
     if (existingRestaurant) {
       return res
         .status(409)
-        .json({ message: "User restaurant already exists " });
+        .json({ message: "User restaurant already exists" });
     }
 
     const imageUrl = await uploadImage(req.file as Express.Multer.File);
@@ -56,8 +55,8 @@ const updateMyRestaurant = async (req: Request, res: Response) => {
     restaurant.restaurantName = req.body.restaurantName;
     restaurant.city = req.body.city;
     restaurant.country = req.body.country;
-    restaurant.deliveryPrice = req.body.country;
-    restaurant.estimateDeliveryTime = req.body.estimateDeliveryTime;
+    restaurant.deliveryPrice = req.body.deliveryPrice;
+    restaurant.estimatedDeliveryTime = req.body.estimatedDeliveryTime;
     restaurant.cuisines = req.body.cuisines;
     restaurant.menuItems = req.body.menuItems;
     restaurant.lastUpdated = new Date();
@@ -99,7 +98,6 @@ const updateOrderStatus = async (req: Request, res: Response) => {
     const { status } = req.body;
 
     const order = await Order.findById(orderId);
-
     if (!order) {
       return res.status(404).json({ message: "order not found" });
     }
@@ -126,7 +124,6 @@ const uploadImage = async (file: Express.Multer.File) => {
   const dataURI = `data:${image.mimetype};base64,${base64Image}`;
 
   const uploadResponse = await cloudinary.v2.uploader.upload(dataURI);
-
   return uploadResponse.url;
 };
 

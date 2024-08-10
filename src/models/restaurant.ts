@@ -18,7 +18,7 @@ const restaurantSchema = new mongoose.Schema({
   city: { type: mongoose.Schema.Types.String, required: true },
   country: { type: mongoose.Schema.Types.String, required: true },
   deliveryPrice: { type: mongoose.Schema.Types.Number, required: true },
-  estimateDeliveryTime: { type: mongoose.Schema.Types.Number, required: true },
+  estimatedDeliveryTime: { type: mongoose.Schema.Types.Number, required: true },
   cuisines: { type: mongoose.Schema.Types.String, required: true },
   menuItems: [menuItemSchema],
   imageUrl: { type: String, required: true },

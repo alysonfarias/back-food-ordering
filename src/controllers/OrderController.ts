@@ -60,8 +60,10 @@ const stripeWebhookHandler = async (req: Request, res: Response) => {
     order.totalAmount = event.data.object.amount_total;
     order.status = "paid";
 
-    res.status(200).send();
+    await order.save();
   }
+
+  res.status(200).send();
 };
 
 const createCheckoutSession = async (req: Request, res: Response) => {

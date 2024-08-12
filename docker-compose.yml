@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: app.foodorder
+    build:
+      context: ./
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    env_file: .env
+    volumes:
+      - ./:/app

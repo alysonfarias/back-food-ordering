@@ -34,7 +34,6 @@ app.use("/api/my/restaurant", myRestaurantRoute);
 app.use("/api/restaurant", restaurantRoute);
 app.use("/api/order", orderRoute);
 
-const PORT = 7000;
-app.listen(PORT, () => {
-  console.log(`server started on localhost:${PORT}`);
+app.listen(process.env.SERVER_PORT, () => {
+  console.log("Server is running on port", process.env.SERVER_PORT);
 });
